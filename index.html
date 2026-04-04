@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Koragi Stickers</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="assets/favicon/favicon.ico"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="assets/favicon/favicon-16x16.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="assets/favicon/favicon-32x32.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="assets/favicon/apple-touch-icon.png"
+        />
+        <link rel="manifest" href="assets/favicon/site.webmanifest" />
+        <meta property="og:title" content="Koragi Stickers" />
+        <meta property="og:description" content="Free sticker packs for Telegram and Signal, ported from Discord." />
+        <meta property="og:image" content="https://stickers.koragi.tv/assets/og-image.png" />
+        <meta property="og:url" content="https://stickers.koragi.tv" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <style>
+            /* ── Base ─────────────────────────────────────────────── */
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                background-color: #f5f0ff;
+                color: #2e2640;
+                font-family: system-ui, sans-serif;
+                font-size: 15px;
+                line-height: 1.6;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+
+            /* ── Typography ───────────────────────────────────────── */
+            h1,
+            h2 {
+                font-family: "Silkscreen", monospace;
+                font-weight: 400;
+                letter-spacing: 0.02em;
+            }
+
+            h1 {
+                font-size: 1.4rem;
+                color: #5c3d9e;
+            }
+
+            h2 {
+                font-size: 0.85rem;
+                color: #7a52c2;
+            }
+
+            /* ── Links ────────────────────────────────────────────── */
+            a {
+                color: #8b6fd4;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: #5c3d9e;
+            }
+
+            /* ── Layout ───────────────────────────────────────────── */
+            .container {
+                width: 100%;
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
+            }
+
+            /* ── Header ───────────────────────────────────────────── */
+            header {
+                padding: 2.5rem 0 2rem;
+                border-bottom: 1px dashed #c4aff5;
+            }
+
+            header .container {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .site-desc {
+                color: #5a4e72;
+                max-width: 520px;
+            }
+
+            .install-links {
+                display: flex;
+                gap: 0.75rem;
+                flex-wrap: wrap;
+                margin-top: 0.25rem;
+            }
+
+            .btn-link {
+                display: inline-block;
+                border: 1px solid #6b4fb8;
+                border-radius: 4px;
+                padding: 0.3rem 0.75rem;
+                font-size: 0.875rem;
+                color: #6b4fb8;
+                letter-spacing: 0.02em;
+            }
+
+            .btn-link:hover {
+                background-color: #6b4fb8;
+                color: #f5f0ff;
+            }
+
+            /* ── Main ─────────────────────────────────────────────── */
+            main {
+                flex: 1;
+                padding: 0 0 2rem;
+            }
+
+            /* ── Pack section ─────────────────────────────────────── */
+            .pack {
+                padding: 1.75rem 0;
+            }
+
+            .pack + .pack {
+                border-top: 1px dashed #c4aff5;
+            }
+
+            .pack-header {
+                display: flex;
+                flex-direction: column;
+                gap: 0.6rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .pack-header .install-links {
+                display: flex;
+                gap: 0.75rem;
+                flex-wrap: wrap;
+            }
+
+            /* ── Sticker grid ─────────────────────────────────────── */
+            .sticker-grid {
+                display: grid;
+                grid-template-columns: repeat(5, 140px);
+                gap: 12px;
+            }
+
+            @media (max-width: 780px) {
+                .sticker-grid {
+                    grid-template-columns: repeat(
+                        auto-fill,
+                        minmax(128px, 1fr)
+                    );
+                }
+            }
+
+            .sticker-grid a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 4px;
+                padding: 6px;
+                outline: 1px solid transparent;
+                outline-offset: -1px;
+                transition: outline-color 0.15s;
+            }
+
+            .sticker-grid a:hover {
+                outline-color: #c4aff5;
+            }
+
+            .sticker-grid img {
+                width: 128px;
+                height: 128px;
+                object-fit: contain;
+                display: block;
+            }
+
+            /* ── Footer ───────────────────────────────────────────── */
+            footer {
+                border-top: 1px dashed #c4aff5;
+                padding: 1.25rem 0;
+                font-size: 0.8rem;
+                color: #8a7aa8;
+            }
+
+            footer .container {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>Koragi Stickers</h1>
+                <p class="site-desc">
+                    Hey! I'm Koragi — a fox (some might say corgi) VTuber
+                    streaming on
+                    <a
+                        href="https://www.twitch.tv/koragi_ch"
+                        target="_blank"
+                        rel="noopener"
+                        >twitch</a
+                    >
+                    and posting shorts on
+                    <a
+                        href="https://www.youtube.com/@koragi_ch"
+                        target="_blank"
+                        rel="noopener"
+                        >YouTube</a
+                    >.
+                </p>
+                <p class="site-desc">
+                    I ported my
+                    <a
+                        href="https://discord.koragi.tv"
+                        target="_blank"
+                        rel="noopener"
+                        >Discord</a
+                    >
+                    stickers so you can use them on other platforms too —
+                    install them below if your device supports it!
+                </p>
+            </div>
+        </header>
+
+        <main>
+            <div class="container">
+                <section class="pack">
+                    <div class="pack-header">
+                        <h2>Pack 1 &mdash; Back Home</h2>
+                        <div class="install-links">
+                            <a
+                                class="btn-link"
+                                href="https://t.me/addstickers/koragi"
+                                target="_blank"
+                                rel="noopener"
+                                >Telegram</a
+                            >
+                            <a
+                                class="btn-link"
+                                href="https://signal.art/addstickers/#pack_id=bc0e4cd8cc18693303fb47199ddeb9f3&pack_key=294945432fd83318ccd47e7f078dc7c643178b536dd635d100450c4b8113f82d"
+                                target="_blank"
+                                rel="noopener"
+                                >Signal</a
+                            >
+                        </div>
+                    </div>
+                    <div class="sticker-grid">
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_bored.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_bored.png"
+                                alt="bored"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_eating.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_eating.png"
+                                alt="eating"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_evil.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_evil.png"
+                                alt="evil"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_fluffy.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_fluffy.png"
+                                alt="fluffy"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_genius.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_genius.png"
+                                alt="genius"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_get_out.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_get_out.png"
+                                alt="get out"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_good_night.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_good_night.png"
+                                alt="good night"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_let_go.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_let_go.png"
+                                alt="let go"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_my_bad.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_my_bad.png"
+                                alt="my bad"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_ok.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_ok.png"
+                                alt="ok"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_potato.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_potato.png"
+                                alt="potato"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_rage.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_rage.png"
+                                alt="rage"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_relax.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_relax.png"
+                                alt="relax"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_stare.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_stare.png"
+                                alt="stare"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_shy.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_shy.png"
+                                alt="shy"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_shock.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_shock.png"
+                                alt="shock"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_tada.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_tada.png"
+                                alt="tada"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_thumbs_up.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_thumbs_up.png"
+                                alt="thumbs up"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_worry.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_worry.png"
+                                alt="worry"
+                            />
+                        </a>
+
+                        <a
+                            href="assets/stickers/pack_1/koragi_sticker_you_can_do_it.png"
+                            target="_blank"
+                        >
+                            <img
+                                src="assets/stickers/pack_1/koragi_sticker_you_can_do_it.png"
+                                alt="you can do it"
+                            />
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container">
+                <span
+                    >free to use &mdash; no resale, modifications, or AI
+                    training</span
+                >
+                <a href="https://koragi.tv">koragi.tv</a>
+            </div>
+        </footer>
+    </body>
+</html>
